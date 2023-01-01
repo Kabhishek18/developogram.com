@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('editor/', include('django_summernote.urls')),
     path('api/blog/', include('blogs.urls')),
+    path('', include('testcase.urls')),
 ]
 if settings.DEBUG:  # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
