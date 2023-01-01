@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # adding in installed apps
     'rest_framework',
+    'django_summernote',
     'users.apps.UsersConfig',
     'blogs.apps.BlogsConfig',
     'django.contrib.admin',
@@ -147,3 +149,6 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     )
 }
+
+# allows to load iframe from same hostname
+X_FRAME_OPTIONS = 'SAMEORIGIN'

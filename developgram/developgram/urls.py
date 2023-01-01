@@ -19,8 +19,16 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
+#Admin Url Config 
+admin.site.site_header = 'Developogram'
+admin.site.site_title = 'Developogram'
+admin.site.index_title = 'Developogram Administration'
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('editor/', include('django_summernote.urls')),
     path('api/blog/', include('blogs.urls')),
 ]
 if settings.DEBUG:  # new
