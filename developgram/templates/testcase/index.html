@@ -1,19 +1,12 @@
 {% extends 'testcase/base.html' %}
-{% load static %}
-
-{% block title %}
-{{title}}
-{% endblock title %}
-{% block meta %}
-This is  meta
-{% endblock meta %}
-
+{% block title %} {{title}}{% endblock %}
+{% block meta %} {{meta}} {% endblock %}
 
 {% block content %}
-{{content}}
-    {% for querysets in queryset %}
-        <li class="list-group-item text-center">{{ queryset.title }}</li>
-    {% endfor %}
+     
+{% for queryset in querysets %}
+    <li>{{queryset.title}}</li>
+    <p>{{ queryset.precontent|safe}}</p>
+{% endfor %}    
 
-
-{% endblock content %}
+{% endblock %}

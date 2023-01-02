@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('editor/', include('django_summernote.urls')),
     path('api/blog/', include('blogs.urls')),
+    path('api/user/', include('users.urls')),
     path('', include('testcase.urls')),
 ]
 if settings.DEBUG:  # new
