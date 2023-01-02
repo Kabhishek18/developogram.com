@@ -7,5 +7,4 @@ from rest_framework.authtoken.models import Token
 
 
 def UserTokenGeneration():
-  for user in User.objects.all():
-    Token.objects.get_or_create(user=user)
+    pass
