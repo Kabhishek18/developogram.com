@@ -32,9 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # adding in installed apps
+    #auth Config
     'rest_framework.authtoken',
+    
+    #required Config
     'rest_framework',
     'django_summernote',
+    #Modules
     'users.apps.UsersConfig',
     'testcase.apps.TestcaseConfig',
     'blogs.apps.BlogsConfig',
@@ -149,9 +153,13 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+
     ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
