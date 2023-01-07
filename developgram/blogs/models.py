@@ -19,7 +19,7 @@ class Categories(MPTTModel):
         on_delete=models.CASCADE
     )
     status = models.IntegerField(choices=STATUS, default=0)
-    image = models.ImageField(upload_to='blogimages/')
+    image = models.ImageField(upload_to='blogimages/',null=True,blank=True)
     @property
     def thumbnail_preview(self):
         if self.image:
@@ -94,3 +94,22 @@ class Codes(models.Model):
     def __str__(self):
         return self.title
 
+
+class Comment(models.Model):
+    name = models.CharField(max_length=300,null=True)
+    email = models.CharField(max_length=300)
+    content = models.TextField()
+    postname = models.ForeignKey('Post', on_delete= models.DO_NOTHING,related_name='blog_post_comm',blank=True,null=True)
+    codename = models.ForeignKey('Codes', on_delete= models.DO_NOTHING,related_name='blog_codes_comm',blank=True,null=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+
+    class Meta:
+        verbose_name_plural = ("Comments")
+
+    def __str__(self):
+        return self.name
+
+    
