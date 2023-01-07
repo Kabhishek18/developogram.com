@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post,Code
+from .models import Codes,Post,Categories
 
 class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status','created_on','updated_on')
@@ -15,12 +15,24 @@ class PostAdmin(SummernoteModelAdmin):
     thumbnail_preview.short_description = 'Thumbnail Preview'
     thumbnail_preview.allow_tags = True
 
+class CategoryAdmin(SummernoteModelAdmin):
+    list_display = ('name', 'slug', 'parent','created_on','updated_on')
+    list_filter = ("status",)
+    readonly_fields = ('thumbnail_preview',) 
+    search_fields = ['name', 'slug','parent']
+    prepopulated_fields = {'slug': ('name',)}
+    def thumbnail_preview(self, obj):
+        return obj.thumbnail_preview
+
+    thumbnail_preview.short_description = 'Thumbnail Preview'
+    thumbnail_preview.allow_tags = True
+
 class CodeAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status','created_on','updated_on')
     list_filter = ("status",)
     readonly_fields = ('thumbnail_preview',) 
     search_fields = ['title', 'content']
-    summernote_fields = ('content', )
+    summernote_fields = ('content','precontent', )
     prepopulated_fields = {'slug': ('title',)}
     def thumbnail_preview(self, obj):
         return obj.thumbnail_preview
@@ -29,5 +41,8 @@ class CodeAdmin(SummernoteModelAdmin):
     thumbnail_preview.allow_tags = True
 
 
+
+admin.site.register(Categories, CategoryAdmin)
+
 admin.site.register(Post, PostAdmin)
-admin.site.register(Code, CodeAdmin)
+admin.site.register(Codes, CodeAdmin)
