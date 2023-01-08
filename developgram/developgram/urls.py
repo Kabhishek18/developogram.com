@@ -30,7 +30,7 @@ admin.site.index_title = 'Developogram Administration'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('editor/', include('django_summernote.urls')),
-    path('api/blog/', include('blogs.urls')),
+    path('api/', include('blogs.urls')),
     path('api/user/', include('users.urls')),
 
     path('api/token/',

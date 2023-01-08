@@ -8,6 +8,8 @@ STATUS = (
     (0,"Draft"),
     (1,"Publish")
 )
+
+#Categories for Post
 class Categories(MPTTModel):
     name = models.CharField(max_length=150)
     slug = models.SlugField(unique=True)
@@ -42,6 +44,7 @@ class Categories(MPTTModel):
         return ' -> '.join(full_path[::-1])
 
 
+#Blog Post
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     subtitle = models.CharField(max_length=400)
@@ -67,7 +70,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
+#Blog Code
 class Codes(models.Model):
     title = models.CharField(max_length=200, unique=True)
     subtitle = models.CharField(max_length=400)
@@ -75,7 +78,6 @@ class Codes(models.Model):
     author = models.ForeignKey(User, on_delete= models.DO_NOTHING,related_name='blog_codes')
     category = models.ForeignKey('Categories', on_delete= models.DO_NOTHING,related_name='blog_cat_codes')
     content = models.TextField()
-    
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to='codeimages/')
     @property
@@ -90,11 +92,10 @@ class Codes(models.Model):
         ordering = ['-created_on']
         verbose_name_plural = "codes"   
 
-
     def __str__(self):
         return self.title
 
-
+#Comments for Post and codes
 class Comment(models.Model):
     name = models.CharField(max_length=300,null=True)
     email = models.CharField(max_length=300)
