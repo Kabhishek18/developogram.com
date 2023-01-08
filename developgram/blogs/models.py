@@ -43,6 +43,17 @@ class Categories(MPTTModel):
 
         return ' -> '.join(full_path[::-1])
 
+class Tag(models.Model):
+    name = models.CharField(max_length=300,null=True)
+    content = models.TextField()
+    status = models.IntegerField(choices=STATUS, default=0)
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name_plural = ("Tags")
+
+    def __str__(self):
+        return self.name
 
 #Blog Post
 class Post(models.Model):
@@ -52,6 +63,7 @@ class Post(models.Model):
     metatag = models.TextField(null=True,default='')
     author = models.ForeignKey(User, on_delete= models.DO_NOTHING,related_name='blog_posts')
     category = models.ForeignKey('Categories', on_delete= models.DO_NOTHING,related_name='blog_cat_posts')
+    labeltag = models.ForeignKey('LabelTag', on_delete= models.DO_NOTHING,related_name='blog_post_tags')
     precontent = models.TextField()
     content = models.TextField()
     
@@ -78,6 +90,7 @@ class Codes(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.DO_NOTHING,related_name='blog_codes')
     category = models.ForeignKey('Categories', on_delete= models.DO_NOTHING,related_name='blog_cat_codes')
+    labeltag = models.ForeignKey('LabelTag', on_delete= models.DO_NOTHING,related_name='blog_code_tags')
     metatag = models.TextField()
     content = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
@@ -111,6 +124,19 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name_plural = ("Comments")
+
+    def __str__(self):
+        return self.name
+
+#Comments for Post and codes
+class LabelTag(models.Model):
+    name = models.CharField(max_length=300,null=True)
+    content = models.TextField()
+    status = models.IntegerField(choices=STATUS, default=0)
+    updated_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name_plural = ("Tags")
 
     def __str__(self):
         return self.name
