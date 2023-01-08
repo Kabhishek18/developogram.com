@@ -7,7 +7,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ("status",)
     readonly_fields = ('thumbnail_preview',) 
     search_fields = ['title', 'content']
-    summernote_fields = ('content','precontent', )
+    summernote_fields = ('content','precontent','metatag' )
     prepopulated_fields = {'slug': ('title',)}
     def thumbnail_preview(self, obj):
         return obj.thumbnail_preview
@@ -32,7 +32,7 @@ class CodeAdmin(SummernoteModelAdmin):
     list_filter = ("status",'created_on','updated_on')
     readonly_fields = ('thumbnail_preview',) 
     search_fields = ['title', 'content']
-    summernote_fields = ('content','precontent', )
+    summernote_fields = ('content','precontent','metatag' )
     prepopulated_fields = {'slug': ('title',)}
     def thumbnail_preview(self, obj):
         return obj.thumbnail_preview
