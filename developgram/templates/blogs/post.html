@@ -1,0 +1,37 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{% block content%}
+
+    <!-- MAIN SECTION -->                  
+    <section id="article-section" class="line">
+        <div class="margin">
+        <!-- ARTICLES -->             
+        <div class="s-12 l-9">
+            <!-- ARTICLE 1 -->               
+            <article class="margin-bottom">
+                <div class="post-1 line">
+                    <!-- image -->                 
+                    <div class="s-12 l-11 post-image">                   
+                    <img src="/media/{{post.image}}" alt="{{post.slug}}">              
+                    </div>
+                    <!-- date -->                 
+                    <div class="s-12 l-1 post-date">
+                        <p class="date">{{post.created_on|date:'d'}}</p>
+                        <p class="month">{{post.created_on| date:'M'}}</p>
+                    </div>
+                </div>
+                <!-- text -->                 
+                <div class="post-text">
+                    <h1>{{post.title}}</h1>
+                    {{post.content|safe}}
+                </div>
+            </article>
+            
+            {% include 'blogs/horizontalads.html'%}
+        </div>
+        {% include 'blogs/sidebarads.html'%}    
+        </div>
+    </section>
+
+
+ {% endblock%}

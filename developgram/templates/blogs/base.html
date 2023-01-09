@@ -1,25 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width" />
-      <title> {% block title %}Base title{% endblock %}</title>
-       {% block meta %} No Meta {% endblock %}
-      <link rel="stylesheet" href="css/components.css">
-      <link rel="stylesheet" href="css/responsee.css">
+    <meta name="viewport" content="width=device-width" />
+    {% if meta %}
+        {% block meta %} {{meta}} {% endblock %}
+    {% endif %}
+    {% if title %}
+        <title> {% block title %}{{title}}{% endblock %}</title>
+    {% endif %}
+       <link rel="stylesheet" href="{% static 'templates/css/components.css'%}">
+      <link rel="stylesheet" href="{% static 'templates/css/responsee.css'%}">
       <!-- CUSTOM STYLE -->       
       <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-      <link rel="stylesheet" href="css/template-style.css">
-      <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-      <script type="text/javascript" src="js/jquery-ui.min.js"></script>    
-      <script type="text/javascript" src="js/modernizr.js"></script>
-      <script type="text/javascript" src="js/responsee.js"></script>          
+      <link rel="stylesheet" href="{% static 'templates/css/template-style.css'%}">
+      <script type="text/javascript" src="{% static 'templates/js/jquery-1.8.3.min.js'%}"></script>
+      <script type="text/javascript" src="{% static 'templates/js/jquery-ui.min.js'%}"></script>    
+      <script type="text/javascript" src="{% static 'templates/js/modernizr.js'%}"></script>
+      <script type="text/javascript" src="{% static 'templates/js/responsee.js'%}"></script>          
       <!--[if lt IE 9]> 
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
       <![endif]-->     
     
 </head>
 <body class="size-1140">
+    
+    {% include 'blogs/nav.html'%}
     {% block content %} Body content {% endblock %}
+    {% include 'blogs/footer.html'%}
 </body>
 </html>
