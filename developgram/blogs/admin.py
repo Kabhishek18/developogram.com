@@ -5,7 +5,7 @@ from .models import Codes,Post,Categories,Comment,LabelTag
 class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status','labeltag','created_on','updated_on')
     list_filter = ("status","labeltag",'created_on','updated_on')
-    readonly_fields = ('thumbnail_preview',) 
+    readonly_fields = ('thumbnail_preview','thumbnail_banner_preview') 
     search_fields = ['title', 'content']
     summernote_fields = ('content','precontent','metatag' )
     prepopulated_fields = {'slug': ('title',)}

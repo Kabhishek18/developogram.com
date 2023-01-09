@@ -14,7 +14,7 @@ admin.site.index_title = 'Developogram Administration'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('testcase.urls')),
+    path('', include('pages.urls')),
     path('editor/', include('django_summernote.urls')),
     
     path('api/', include('blogs.urls')),

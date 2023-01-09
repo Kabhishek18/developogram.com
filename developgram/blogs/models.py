@@ -69,6 +69,13 @@ class Post(models.Model):
     
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to='blogimages/')
+    bannerimage = models.ImageField(upload_to='blogimages/',blank=True,null=True)
+    @property
+    def thumbnail_banner_preview(self):
+        if self.bannerimage:
+            return mark_safe('<img src="{}" width="320" height="240" />'.format(self.bannerimage.url))
+        return ""  
+    
     @property
     def thumbnail_preview(self):
         if self.image:

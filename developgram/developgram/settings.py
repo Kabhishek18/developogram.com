@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #Modules
     'users.apps.UsersConfig',
     'testcase.apps.TestcaseConfig',
+    'pages.apps.PagesConfig',
     'blogs.apps.BlogsConfig',
     'multimedia.apps.MultimediaConfig',
 
