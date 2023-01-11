@@ -21,8 +21,8 @@
                   <a href="{% url 'blog'%}/{{item.slug}}">
                      <h2>{{item.title}}</h2>
                   </a>
-                  <p>{{item.precontent |slice:":230"|safe}}... </p>
-                  <p><a>Read More</a></p>
+                  <p>{{item.precontent |slice:":200"|safe}}... </p>
+                  <a class="continue-reading" href="{% url 'blog'%}/{{item.slug}}">Continue reading</a>
                </div>
                <!-- date -->                 
                <div class="s-12 l-1 post-date">

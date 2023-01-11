@@ -23,14 +23,16 @@
                 <!-- text -->                 
                 <div class="post-text">
                     <h1>{{post.title}}</h1>
+                    <h4>{{post.subtitle}}</h4>
                     {{post.content|safe}}
                 </div>
             </article>
             
-            {% include 'blogs/horizontalads.html'%}
         </div>
         {% include 'blogs/sidebarads.html'%}    
         </div>
+        
+        {% include 'blogs/horizontalads.html'%}
     </section>
 
 

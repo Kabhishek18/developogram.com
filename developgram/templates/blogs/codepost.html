@@ -1,0 +1,43 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{% block content%}
+     <!-- MAIN SECTION -->                  
+      <section id="article-section" class="line archive">
+         <div class="margin">
+            <!-- ARTICLES -->             
+            <div class="s-12 l-9">
+            {% for item in posts %}
+               <!-- ARTICLE 1 -->               
+               <article class="margin-bottom">
+                  <div class="post-{{ forloop.counter }} line">
+                     <!-- image -->                 
+                     <div class="s-12 l-11 post-image">                   
+                        <a href="{% url 'code'%}/{{item.slug}}">
+                            <img src="media/{{item.bannerimage}}" alt="{{item.slug}}">              
+                     </div>
+                     <!-- date -->                 
+                     <div class="s-12 l-1 post-date">
+                        <p class="date">{{item.created_on|date:'d'}}</p>
+                        <p class="month">{{item.created_on| date:'M'}}</p>
+                     </div>
+                  </div>
+                  <!-- text -->                 
+                  <div class="post-text">
+                    <a href="{% url 'code'%}/{{item.slug}}">
+                        <h2>{{item.title}}</h2>
+                    </a>
+                    <p>{{item.precontent |slice:":200"|safe}}... </p>
+                    <a class="continue-reading" href="{% url 'code'%}/{{item.slug}}">Continue reading</a>
+                  </div>
+               </article>
+            {% endfor %}      
+            
+            </div>
+            <!-- SIDEBAR -->             
+            {% include 'blogs/sidebarads.html'%}    
+         </div>
+
+         
+         {% include 'blogs/horizontalads.html'%}
+      </section>
+{% endblock%}

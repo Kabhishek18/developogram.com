@@ -22,14 +22,23 @@ def blog(request):
 def blogdetail(request,slug):
   poststyle = [1, 2, 3, 4, 5]
   rand_num = random.choice(poststyle)
-  post = Post.objects.get(slug=slug)
-  
+  post = Post.objects.get(slug=slug)  
   data =  {"meta": "", "title":post.title,'post':post,'poststyle':rand_num}
   return render(request, "blogs/post.html",data)  
 
 def code(request):
-  data =  {"meta": "", "title":'Index:title'}
+  allcode = Codes.objects.all()
+  data =  {"meta": "", "title":"Code : Ek Prem Katha",'posts':allcode}
   return render(request, "blogs/codepost.html",data)  
+
+
+def codedetail(request,slug):
+  poststyle = [1, 2, 3, 4, 5]
+  rand_num = random.choice(poststyle)
+  post = Codes.objects.get(slug=slug)  
+  data =  {"meta": "", "title":post.title,'post':post,'poststyle':rand_num}
+  return render(request, "blogs/post.html",data)  
+
 
 def contact(request):
   data =  {"meta": "", "title":'Conact'}

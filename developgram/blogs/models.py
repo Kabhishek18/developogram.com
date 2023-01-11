@@ -68,8 +68,8 @@ class Post(models.Model):
     content = models.TextField()
     
     status = models.IntegerField(choices=STATUS, default=0)
-    image = models.ImageField(upload_to='blogimages/')
-    bannerimage = models.ImageField(upload_to='blogimages/',blank=True,null=True)
+    image = models.ImageField(upload_to='blogimages/',default='default.png')
+    bannerimage = models.ImageField(upload_to='blogimages/',default='default.png')
     @property
     def thumbnail_banner_preview(self):
         if self.bannerimage:
@@ -99,9 +99,17 @@ class Codes(models.Model):
     category = models.ForeignKey('Categories', on_delete= models.DO_NOTHING,related_name='blog_cat_codes',blank=True,null=True)
     labeltag = models.ForeignKey('LabelTag', on_delete= models.DO_NOTHING,related_name='blog_code_tags',blank=True,null=True)
     metatag = models.TextField(null=True,default='',blank=True)
+    precontent = models.TextField()
     content = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
-    image = models.ImageField(upload_to='codeimages/')
+    image = models.ImageField(upload_to='codeimages/',default='default.png')
+    bannerimage = models.ImageField(upload_to='codeimages/',default='default.png')
+    @property
+    def thumbnail_banner_preview(self):
+        if self.bannerimage:
+            return mark_safe('<img src="{}" width="320" height="240" />'.format(self.bannerimage.url))
+        return ""  
+    
     @property
     def thumbnail_preview(self):
         if self.image:
