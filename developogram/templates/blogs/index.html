@@ -8,28 +8,30 @@
          <!-- ARTICLES -->             
          <div class="s-12 l-9">
          {% for item in posts %}
-            <!-- ARTICLE 1 -->               
-            <article class="post-{{ forloop.counter }}  {% if forloop.counter|divisibleby:2 %}right-align{% endif%} line">
-               <!-- image -->                 
-               <div class="s-12 l-6 post-image">                   
-                  <a href="{% url 'blog'%}/{{item.slug}}">
-                  <img src="media/{{item.image}}" alt="Fashion 1">
-                  </a>                
-               </div>
-               <!-- text -->                 
-               <div class="s-12 l-5 post-text">
-                  <a href="{% url 'blog'%}/{{item.slug}}">
-                     <h2>{{item.title}}</h2>
-                  </a>
-                  <p>{{item.precontent |slice:":200"|safe}}... </p>
-                  <a class="continue-reading" href="{% url 'blog'%}/{{item.slug}}">Continue reading</a>
-               </div>
-               <!-- date -->                 
-               <div class="s-12 l-1 post-date">
-                  <p class="date">{{item.created_on|date:'d'}}</p>
-                  <p class="month">{{item.created_on| date:'M'}}</p>
-               </div>
-            </article>
+            <!-- ARTICLE-->              
+            {% if item.status == 1 %}
+               <article class="post-{{ forloop.counter }}  {% if forloop.counter|divisibleby:2 %}right-align{% endif%} line">
+                  <!-- image -->                 
+                  <div class="s-12 l-6 post-image">                   
+                     <a href="{% url 'blog'%}/{{item.slug}}">
+                     <img src="media/{{item.image}}" alt="Fashion 1">
+                     </a>                
+                  </div>
+                  <!-- text -->                 
+                  <div class="s-12 l-5 post-text">
+                     <a href="{% url 'blog'%}/{{item.slug}}">
+                        <h2>{{item.title|slice:":85"|safe}}...</h2>
+                     </a>
+                     <p>{{item.precontent |slice:":200"|safe}}... </p>
+                     <a class="continue-reading" href="{% url 'blog'%}/{{item.slug}}">Continue reading</a>
+                  </div>
+                  <!-- date -->                 
+                  <div class="s-12 l-1 post-date">
+                     <p class="date">{{item.created_on|date:'d'}}</p>
+                     <p class="month">{{item.created_on| date:'M'}}</p>
+                  </div>
+               </article>
+            {% endif %}
          {% endfor %}   
 
             

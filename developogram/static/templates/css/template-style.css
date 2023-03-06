@@ -75,7 +75,7 @@ section p {
 #home-section .post-text h2 {
 	color: #fff;
 	font-size: 3.2em;
-	font-weight: 100;
+	font-weight: 400;
 	line-height: 1em;
 	margin: 0 0 0.3125em 0;
   opacity:1;
@@ -180,11 +180,11 @@ footer p, footer a, footer a:link, footer a:active, footer a:visited {
 }
 #article-section h1 {
 	font-size: 3em;
-	font-weight: 100;
+	font-weight: 400;
 	margin-top: 0;
 }
 #article-section h3, #article-section h4, #article-section h5, #article-section h6 {
-	font-weight: 300;
+	font-weight: 600;
 }
 #article-section .post-text {
 	padding: 2em 3em 3em;

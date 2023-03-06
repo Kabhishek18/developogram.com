@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from django.http import HttpResponse
 from django.template import Context, Template
 from blogs.models import Categories,Post,Codes,Comment
@@ -8,7 +10,7 @@ import random
 # Create your views here.
 def index(request):
   allpost = Post.objects.all()
-  data =  {"meta": "", "title":'Index:title','posts':allpost}
+  data =  {"meta": "", "title":'Index : Title','posts':allpost}
   return render(request, "blogs/index.html",data)
 
 def about(request):

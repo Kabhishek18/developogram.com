@@ -7,7 +7,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ("status","labeltag",'created_on','updated_on')
     readonly_fields = ('thumbnail_preview','thumbnail_banner_preview') 
     search_fields = ['title', 'content']
-    summernote_fields = ('content','precontent','metatag' )
+    summernote_fields = ('content','precontent' )
     prepopulated_fields = {'slug': ('title',)}
     def thumbnail_preview(self, obj):
         return obj.thumbnail_preview

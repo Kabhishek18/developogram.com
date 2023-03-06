@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
-    {% if meta %}
-        {% block meta %} {{meta}} {% endblock %}
+    {% if post.metatag %}
+        {% block  post.metatag  %} {{  post.metatag |safe  }} {% endblock %}
     {% endif %}
     {% if title %}
-        <title> {% block title %}{{title}}{% endblock %}</title>
+        <title> {% block title %}{{ title }}{% endblock %}</title>
     {% endif %}
        <link rel="stylesheet" href="{% static 'templates/css/components.css'%}">
       <link rel="stylesheet" href="{% static 'templates/css/responsee.css'%}">
