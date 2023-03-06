@@ -32,8 +32,47 @@
                   </div>
                </article>
             {% endif %}
-         {% endfor %}   
+         {% endfor %}
+         <div class="pagination">
+            <div class="step">
+               {% if posts.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ posts.previous_page_number }}"> &laquo; previous</a>
+                  {% if posts.number > 3 %}
+                     <a href="?page=1">1</a>
+                     {% if posts.number > 4 %}
+                        <span>...</span>
+                     {% endif %}
+                  {% endif %}
 
+               {% endif %}
+               {% comment %} If Page Count Is Required 
+               https://testdriven.io/blog/django-pagination/
+               {% endcomment %}
+                {% comment %} <span href ="javascript:void(0)">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span> {% endcomment %}
+               {% for num in posts.paginator.page_range %}
+                  {% if posts.number == num %}
+                  <a href="?page={{ num }}">{{ num }}</a>
+                  {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+                  <a href="?page={{ num }}">{{ num }}</a>
+                  {% endif %}
+               {% endfor %}
+
+
+                {% if posts.has_next %}
+                  {% if posts.number < posts.paginator.num_pages|add:'-3' %}
+                     <span>...</span>
+                     <a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a>
+                  {% elif posts.number < posts.paginator.num_pages|add:'-2' %}
+                     <a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a>
+                  {% endif %}
+                  <a href="?page={{ posts.next_page_number }}">next &raquo;</a>
+                  <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+               </div>
+         </div>      
             
          </div>
          <!-- SIDEBAR -->             

@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from rest_framework import generics
-from rest_framework.pagination import PageNumberPagination
 from django.http import HttpResponse
 from django.template import Context, Template
+# Paginator in a view function 
+from django.core.paginator import Paginator
 from blogs.models import Categories,Post,Codes,Comment
 import random
 
@@ -10,7 +10,10 @@ import random
 # Create your views here.
 def index(request):
   allpost = Post.objects.all()
-  data =  {"meta": "", "title":'Index : Title','posts':allpost}
+  paginator = Paginator(allpost, 2) # Show 25 contacts per page.
+  page_number = request.GET.get('page')
+  page_obj = paginator.get_page(page_number)
+  data =  {"meta": "", "title":'Index : Title','posts':page_obj}
   return render(request, "blogs/index.html",data)
 
 def about(request):
@@ -25,7 +28,8 @@ def blogdetail(request,slug):
   poststyle = [1, 2, 3, 4, 5]
   rand_num = random.choice(poststyle)
   post = Post.objects.get(slug=slug)  
-  data =  {"meta": "", "title":post.title,'post':post,'poststyle':rand_num}
+  meta = post.metatag if (post.metatag !="") else ''
+  data =  {"meta": meta, "title":post.title,'post':post,'poststyle':rand_num}
   return render(request, "blogs/post.html",data)  
 
 def code(request):

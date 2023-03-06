@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
-    {% if post.metatag %}
-        {% block  post.metatag  %} {{  post.metatag |safe  }} {% endblock %}
+    {% if meta %}
+        {% block meta  %} {{  meta |safe  }} {% endblock %}
     {% endif %}
     {% if title %}
         <title> {% block title %}{{ title }}{% endblock %}</title>
@@ -21,6 +21,7 @@
       <script type="text/javascript" src="{% static 'templates/js/responsee.js'%}"></script>
       <!-- <link rel="stylesheet" href="{% static 'templates/highlight/styles/default.min.css'%}">
       <script src="{% static 'templates/highlight/highlight.min.js' %}"></script> -->
+      
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >     
       <link href="{% static 'templates/scripts/highlightjs/styles/vs2015.css'%}" rel="stylesheet" />
       <script src="{% static 'templates/scripts/highlightjs/highlight.pack.js'%}"></script>
