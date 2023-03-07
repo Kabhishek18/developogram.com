@@ -10,7 +10,7 @@ import random
 # Create your views here.
 def index(request):
   allpost = Post.objects.all()
-  paginator = Paginator(allpost, 2) # Show 25 contacts per page.
+  paginator = Paginator(allpost,4) # Show 25 contacts per page.
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
   data =  {"meta": "", "title":'Index : Title','posts':page_obj}
