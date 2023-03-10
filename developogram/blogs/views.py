@@ -9,6 +9,8 @@ class LargeResultsSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 10
 
+
+# Generic APIView 
 class BlogList(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.UserSerializer
