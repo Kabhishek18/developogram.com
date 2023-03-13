@@ -1,0 +1,33 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{% block content%}
+
+    <section id="article-section" class="line">
+        <div class="margin">
+           <div class="s-12 l-12">
+                <form action = "" id="hand_form_id" method = "post">
+                    {% csrf_token %}
+                    {{form.as_div}}
+                </form>
+            </div>
+            <div class="s-12 l-12">
+               <div class="experiment_box" id="experiment_box">
+                <div>
+                    <!--The parent container, image and container for text (to place over the image)-->
+                    <div class="mainContainer" id='mainContainer'>
+                      <!--The default image. You can select a different image too.-->
+                      <img class="img_source" src="{% url 'home' %}media/defaulthand.jpg" id="myimage" alt="" />
+                           
+                      <!--The text, which is also draggable.-->
+                      <div id='theText' onmousedown='this.style.border = "dashed 2px #FF7F27";'>sample text</div>
+                    </div>
+               
+                    <!--Button to save the image with the text.-->
+                    <p><input type="button" onclick="saveImageWithText();" id="bt" value="Save the Image" /></p>
+                 </div>
+               </div>
+            </div>
+        <div>
+    </section> 
+   
+{% endblock %}    

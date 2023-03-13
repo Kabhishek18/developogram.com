@@ -1,3 +1,60 @@
+@font-face {
+    font-family: HomemadeApple-Regular;
+    src: url('/static/templates/font/HomemadeApple-Regular.ttf');
+}
+
+@font-face {
+    font-family: GloriaHallelujah-Regular;
+    src: url('/static/templates/font/GloriaHallelujah-Regular.ttf');
+}
+@font-face {
+    font-family: IndieFlower-Regular;
+    src: url('/static/templates/font/IndieFlower-Regular.ttf');
+}
+
+@font-face {
+    font-family: KIdDOS-Regular;
+    src: url('/static/templates/font/KIdDOS-Regular.ttf');
+}
+@font-face {
+    font-family: Kalam-Bold;
+    src: url('/static/templates/font/Kalam-Bold.ttf');
+}
+
+@font-face {
+    font-family: Kalam-Light;
+    src: url('/static/templates/font/Kalam-Light.ttf');
+}
+@font-face {
+    font-family: Kalam-Regular;
+    src: url('/static/templates/font/Kalam-Regular.ttf');
+}
+
+@font-face {
+    font-family: Lemonella;
+    src: url('/static/templates/font/Lemonella.ttf');
+}
+@font-face {
+    font-family: PermanentMarker-Regular;
+    src: url('/static/templates/font/PermanentMarker-Regular.ttf');
+}
+
+@font-face {
+    font-family: SchoolBell-Regular;
+    src: url('/static/templates/font/SchoolBell-Regular.ttf');
+}
+@font-face {
+    font-family: Kindergarten;
+    src: url('/static/templates/font/kindergarten.ttf');
+}
+
+@font-face {
+    font-family: tangerine;
+    src: url('/static/templates/font/tangerine.ttf');
+}
+
+
+
 body {
 	background: none repeat scroll 0 0 #0b192f;
 	color: #fff;
@@ -306,7 +363,96 @@ address p {
 	color: white;
 
 }
+{% comment %} Templates Form {% endcomment %}
 
+.mainContainer {
+	position: relative;
+	padding: 0;
+	min-width: 250px;
+	min-height: 250px;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.img_source img {border: none; max-width: 100%;}
+
+#theText {
+	position: absolute;
+	top: 90px;
+	left: 0;
+	background: #000;
+	background: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	width: auto;
+	padding: 5px;
+	text-align: left;
+	border: dashed 2px #ff7f27;
+	font: 15px Calibri;
+	display: block;
+	cursor: move;
+}
+
+canvas {max-width: 100%;}
+
+.experiment_box{
+
+}
+.regDropDown select{
+	/* styling */
+	background-color: white;
+	border: thin solid blue;
+	border-radius: 4px;
+	display: inline-block;
+	font: inherit;
+	line-height: 1.5em;
+	padding: 0.5em 3.5em 0.5em 1em;
+  
+	/* reset */
+  
+	margin: 0;      
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+}
+
+.regDropDown select.round {
+	background-image:
+	  linear-gradient(45deg, transparent 50%, gray 50%),
+	  linear-gradient(135deg, gray 50%, transparent 50%),
+	  radial-gradient(#ddd 70%, transparent 72%);
+	background-position:
+	  calc(100% - 20px) calc(1em + 2px),
+	  calc(100% - 15px) calc(1em + 2px),
+	  calc(100% - .5em) .5em;
+	background-size:
+	  5px 5px,
+	  5px 5px,
+	  1.5em 1.5em;
+	background-repeat: no-repeat;
+  }
+  
+ .regDropDown  select.round:focus {
+	background-image:
+	  linear-gradient(45deg, white 50%, transparent 50%),
+	  linear-gradient(135deg, transparent 50%, white 50%),
+	  radial-gradient(gray 70%, transparent 72%);
+	background-position:
+	  calc(100% - 15px) 1em,
+	  calc(100% - 20px) 1em,
+	  calc(100% - .5em) .5em;
+	background-size:
+	  5px 5px,
+	  5px 5px,
+	  1.5em 1.5em;
+	background-repeat: no-repeat;
+	border-color: green;
+	outline: 0;
+  }
+  
+  
 {% comment %} Code {% endcomment %}
 .code-badge {
 	background: #555 !important;
