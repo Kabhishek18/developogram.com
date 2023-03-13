@@ -1,5 +1,5 @@
 # Developogram app in Django using Python Requests
-Multiple codebase Api app in Django that gets the   ( `Blog`,`Code`,`Project`,`Testcase`, `Profile`) To do this, I used Python Requests to call the OpenJWT, Oauth, Token Web.
+Multiple codebase Api app in Django that gets the   ( `Blog`,`Code`,`Project`,`Testcase`, `Profile`,`Resume Builders`) To do this, I used Python Requests to call the OpenJWT, Oauth, Token Web.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
